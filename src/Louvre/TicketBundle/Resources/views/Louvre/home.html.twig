@@ -17,14 +17,15 @@
 
     <div>
         <label for="">Nombre de Billets</label>
-        <input type="number" name="nbTicket">
+        <input type="number" name="nbTicket" class="js-nbTicket">
     </div>
 
-    <button type="submit">Valider</button>
+    <button type="submit" class="js-btn-submit">Valider</button>
 
     {{ form_end(ticketForm) }}
 
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('bundles/js/sessionStorage.js') }}"></script>
 {% endblock %}

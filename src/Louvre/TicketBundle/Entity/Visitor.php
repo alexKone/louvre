@@ -54,7 +54,7 @@ class Visitor
      *
      * @ORM\Column(name="reduc", type="boolean")
      */
-    private $reduc;
+    private $reduc = false;
 
     /**
      * @var

@@ -2,7 +2,10 @@
 
 namespace Louvre\TicketBundle\Form;
 
+use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +16,18 @@ class BillType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('logo')->add('email')->add('price')->add('billingDate')->add('billingCode')        ;
+        $builder->add('email', EmailType::class)
+                ->add('visitors', CollectionType::class, array(
+                    'entry_type' => VisitorType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true
+                ))
+//                ->add('logo')
+//                ->add('name')
+//                ->add('price')
+//                ->add('billingDate')
+//                ->add('billingCode')
+        ;
     }
     
     /**

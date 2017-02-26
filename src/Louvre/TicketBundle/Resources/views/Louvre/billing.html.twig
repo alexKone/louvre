@@ -1,4 +1,12 @@
 {% extends 'LouvreTicketBundle::layout.html.twig' %}
 {% block body %}
-    {{ form(billForm) }}
+    {{ form_start(billForm) }}
+    <a href="#" id="add_category" class="btn btn-default">Ajouter une catégorie</a>
+
+    <button type="submit">Valider</button>
+    {{ form_end(billForm) }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/js/form.js') }}"></script>
 {% endblock %}
