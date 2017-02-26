@@ -6,7 +6,6 @@ use Louvre\TicketBundle\Entity\Ticket;
 use Louvre\TicketBundle\Form\TicketType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
@@ -20,7 +19,7 @@ class HomeController extends Controller
         {
             $request->getSession()->set('session_ticket_form', $ticketForm->getData());
 
-            return new Response('tout est ok');
+            return $this->redirectToRoute('louvre_ticket_billing');
         }
 
         return $this->render('@LouvreTicket/Louvre/home.html.twig', array(
