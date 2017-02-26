@@ -1,0 +1,30 @@
+{% extends "LouvreTicketBundle::layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+
+    {{ form_start(ticketForm) }}
+
+    <div>
+        {{ form_label(ticketForm.visitDate, "Selectionnez une date") }}
+        {{ form_widget(ticketForm.visitDate) }}
+    </div>
+    <div>
+        {{ form_label(ticketForm.halfDay, "Visite") }}
+        {{ form_widget(ticketForm.halfDay) }}
+    </div>
+
+    <div>
+        <label for="">Nombre de Billets</label>
+        <input type="number" name="nbTicket">
+    </div>
+
+    <button type="submit">Valider</button>
+
+    {{ form_end(ticketForm) }}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

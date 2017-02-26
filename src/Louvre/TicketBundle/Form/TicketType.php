@@ -3,6 +3,8 @@
 namespace Louvre\TicketBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +15,14 @@ class TicketType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('visitDate')->add('halfDay')        ;
+        $builder->add('visitDate', DateType::class)
+                ->add('halfDay', ChoiceType::class, array(
+                    'choices' => array(
+                        'Journee' => false,
+                        'Demi-Journee' => true
+                    )
+                ))
+        ;
     }
     
     /**
