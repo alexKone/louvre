@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bill
 {
+
     /**
      * @var int
      *
@@ -48,12 +49,12 @@ class Bill
      *
      * @ORM\Column(name="price", type="integer")
      */
-    private $price;
+    private $price = 0;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="billing_date", type="datetimetz")
+     * @ORM\Column(name="billing_date", type="datetime")
      */
     private $billingDate;
 
@@ -67,6 +68,13 @@ class Bill
     /**
      * @var
      *
+     * @ORM\OneToOne(targetEntity="Louvre\TicketBundle\Entity\Ticket", cascade={"persist"})
+     */
+    private $ticket;
+
+    /**
+     * @var
+     *
      * @ORM\OneToMany(targetEntity="Louvre\TicketBundle\Entity\Visitor", mappedBy="bill")
      */
     private $visitors;
@@ -75,160 +83,9 @@ class Bill
     public function __construct()
     {
         $this->visitors = new ArrayCollection();
-    }
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Bill
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set logo
-     *
-     * @param string $logo
-     *
-     * @return Bill
-     */
-    public function setLogo($logo)
-    {
-        $this->logo = $logo;
-
-        return $this;
-    }
-
-    /**
-     * Get logo
-     *
-     * @return string
-     */
-    public function getLogo()
-    {
-        return $this->logo;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Bill
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set price
-     *
-     * @param integer $price
-     *
-     * @return Bill
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return int
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * Set billingDate
-     *
-     * @param \DateTime $billingDate
-     *
-     * @return Bill
-     */
-    public function setBillingDate($billingDate)
-    {
-        $this->billingDate = $billingDate;
-
-        return $this;
-    }
-
-    /**
-     * Get billingDate
-     *
-     * @return \DateTime
-     */
-    public function getBillingDate()
-    {
-        return $this->billingDate;
-    }
-
-    /**
-     * Set billingCode
-     *
-     * @param string $billingCode
-     *
-     * @return Bill
-     */
-    public function setBillingCode($billingCode)
-    {
-        $this->billingCode = $billingCode;
-
-        return $this;
-    }
-
-    /**
-     * Get billingCode
-     *
-     * @return string
-     */
-    public function getBillingCode()
-    {
-        return $this->billingCode;
+        $this->billingDate = new \DateTime();
+        $this->name = "Musée du Louvre";
+        $this->billingCode = "SecretCode";
+        $this->logo = "http://www.louvre.fr/sites/all/themes/louvre/img/data/logo-louvre.jpg";
     }
 }

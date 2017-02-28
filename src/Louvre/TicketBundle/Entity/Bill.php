@@ -68,6 +68,13 @@ class Bill
     /**
      * @var
      *
+     * @ORM\OneToOne(targetEntity="Louvre\TicketBundle\Entity\Ticket", cascade={"persist"})
+     */
+    private $ticket;
+
+    /**
+     * @var
+     *
      * @ORM\OneToMany(targetEntity="Louvre\TicketBundle\Entity\Visitor", mappedBy="bill")
      */
     private $visitors;
@@ -82,11 +89,10 @@ class Bill
         $this->logo = "http://www.louvre.fr/sites/all/themes/louvre/img/data/logo-louvre.jpg";
     }
 
-
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -182,7 +188,7 @@ class Bill
     /**
      * Get price
      *
-     * @return int
+     * @return integer
      */
     public function getPrice()
     {
@@ -235,6 +241,30 @@ class Bill
     public function getBillingCode()
     {
         return $this->billingCode;
+    }
+
+    /**
+     * Set ticket
+     *
+     * @param \Louvre\TicketBundle\Entity\Ticket $ticket
+     *
+     * @return Bill
+     */
+    public function setTicket(\Louvre\TicketBundle\Entity\Ticket $ticket = null)
+    {
+        $this->ticket = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \Louvre\TicketBundle\Entity\Ticket
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
     }
 
     /**

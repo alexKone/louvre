@@ -59,23 +59,14 @@ class Visitor
     /**
      * @var
      *
-     * @ORM\ManyToOne(targetEntity="Louvre\TicketBundle\Entity\Ticket", inversedBy="visitors")
-     * @ORM\JoinColumn(name="ticket_id", referencedColumnName="id")
-     */
-    private $ticket;
-
-    /**
-     * @var
-     *
      * @ORM\ManyToOne(targetEntity="Louvre\TicketBundle\Entity\Bill", inversedBy="visitors", cascade={"persist"})
      */
     private $bill;
 
-    
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -195,35 +186,11 @@ class Visitor
     /**
      * Get reduc
      *
-     * @return bool
+     * @return boolean
      */
     public function getReduc()
     {
         return $this->reduc;
-    }
-
-    /**
-     * Set ticket
-     *
-     * @param \Louvre\TicketBundle\Entity\Ticket $ticket
-     *
-     * @return Visitor
-     */
-    public function setTicket(\Louvre\TicketBundle\Entity\Ticket $ticket = null)
-    {
-        $this->ticket = $ticket;
-
-        return $this;
-    }
-
-    /**
-     * Get ticket
-     *
-     * @return \Louvre\TicketBundle\Entity\Ticket
-     */
-    public function getTicket()
-    {
-        return $this->ticket;
     }
 
     /**

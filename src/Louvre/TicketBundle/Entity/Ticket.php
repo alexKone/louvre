@@ -37,23 +37,9 @@ class Ticket
     private $halfDay;
 
     /**
-     * @var
-     *
-     * @ORM\OneToMany(targetEntity="Louvre\TicketBundle\Entity\Visitor", mappedBy="ticket")
-     */
-    private $visitors;
-
-
-    public function __construct()
-    {
-        $this->visitors = new ArrayCollection();
-    }
-
-    
-    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -101,44 +87,10 @@ class Ticket
     /**
      * Get halfDay
      *
-     * @return bool
+     * @return boolean
      */
     public function getHalfDay()
     {
         return $this->halfDay;
-    }
-
-    /**
-     * Add visitor
-     *
-     * @param \Louvre\TicketBundle\Entity\Visitor $visitor
-     *
-     * @return Ticket
-     */
-    public function addVisitor(\Louvre\TicketBundle\Entity\Visitor $visitor)
-    {
-        $this->visitors[] = $visitor;
-
-        return $this;
-    }
-
-    /**
-     * Remove visitor
-     *
-     * @param \Louvre\TicketBundle\Entity\Visitor $visitor
-     */
-    public function removeVisitor(\Louvre\TicketBundle\Entity\Visitor $visitor)
-    {
-        $this->visitors->removeElement($visitor);
-    }
-
-    /**
-     * Get visitors
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getVisitors()
-    {
-        return $this->visitors;
     }
 }
