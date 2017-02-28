@@ -67,7 +67,7 @@ class Visitor
     /**
      * @var
      *
-     * @ORM\ManyToOne(targetEntity="Louvre\TicketBundle\Entity\Bill", inversedBy="visitors")
+     * @ORM\ManyToOne(targetEntity="Louvre\TicketBundle\Entity\Bill", inversedBy="visitors", cascade={"persist"})
      */
     private $bill;
 

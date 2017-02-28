@@ -16,12 +16,12 @@ class BillType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('email', EmailType::class)
-                ->add('visitors', CollectionType::class, array(
+        $builder->add('visitors', CollectionType::class, array(
                     'entry_type' => VisitorType::class,
                     'allow_add' => true,
                     'allow_delete' => true
                 ))
+                ->add('email', EmailType::class)
 //                ->add('logo')
 //                ->add('name')
 //                ->add('price')

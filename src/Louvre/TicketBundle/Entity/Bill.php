@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bill
 {
+
     /**
      * @var int
      *
@@ -48,12 +49,12 @@ class Bill
      *
      * @ORM\Column(name="price", type="integer")
      */
-    private $price;
+    private $price = 0;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="billing_date", type="datetimetz")
+     * @ORM\Column(name="billing_date", type="datetime")
      */
     private $billingDate;
 
@@ -75,6 +76,10 @@ class Bill
     public function __construct()
     {
         $this->visitors = new ArrayCollection();
+        $this->billingDate = new \DateTime();
+        $this->name = "Musée du Louvre";
+        $this->billingCode = "SecretCode";
+        $this->logo = "http://www.louvre.fr/sites/all/themes/louvre/img/data/logo-louvre.jpg";
     }
 
 

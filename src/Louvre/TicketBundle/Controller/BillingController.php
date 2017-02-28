@@ -3,8 +3,10 @@
 namespace Louvre\TicketBundle\Controller;
 
 use Louvre\TicketBundle\Entity\Bill;
+use Louvre\TicketBundle\Entity\Ticket;
 use Louvre\TicketBundle\Entity\Visitor;
 use Louvre\TicketBundle\Form\BillType;
+use Louvre\TicketBundle\Form\VisitorType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +20,22 @@ class BillingController extends Controller
             return $this->redirectToRoute('louvre_ticket_homepage');
         }
 
+//        dump($request->getSession()->get('session_ticket_form'));
+
         $bill = new Bill();
         $billForm = $this->createForm(BillType::class, $bill);
+
+        $visit = new Visitor();
+        $visitForm = $this->createForm(VisitorType::class, $visit);
+
         $billForm->handleRequest($request);
 
         if ($request->isMethod('POST') && $billForm->isValid())
         {
+            $visit->setTicket($request->getSession()->get('session_ticket_form'));
+            $visit->setBill($billForm->getData());
+
+
             $visitors = $billForm->getData()->getVisitors();
 
             foreach ($visitors as $visitor)
@@ -32,10 +44,12 @@ class BillingController extends Controller
                 $visitor->setBill($billForm->getData());
             }
 
+            dump($visitors);
+            die();
+
+
             $request->getSession()->set('session_bill_form', $billForm->getData());
 
-            dump($billForm->getData());
-            die();
 
             return new Response('ok');
         }
