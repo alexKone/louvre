@@ -31,7 +31,7 @@ class BillingController extends Controller
             $billForm->getData()->setTicket($request->getSession()->get('session_ticket_form'));
 
             $request->getSession()->set('session_bill_form', $billForm->getData());
-            return $this->redirectToRoute('louvre_ticket_checkout');
+            return $this->redirectToRoute('louvre_ticket_order');
         }
 
         return $this->render('@LouvreTicket/Louvre/billing.html.twig', array(

@@ -15,12 +15,13 @@ class CheckoutController extends Controller
         $visitors = $request->getSession()->get('session_bill_form')->getVisitors();
         $prixTotal = 0;
         foreach ($visitors as $item) {
-            dump($prixTotal += $item->getPrice());
+            $prixTotal += $item->getPrice();
         }
 
-        dump($request->getSession()->get('session_bill_form')->setTotalPrice($prixTotal));
-        die();
+        $request->getSession()->get('session_bill_form')->setTotalPrice($prixTotal);
 
-        return $this->render('@LouvreTicket/Louvre/checkout.html.twig');
+        return $this->render('@LouvreTicket/Louvre/checkout.html.twig', [
+            'sBillForm' =>  $request->getSession()->get('session_bill_form'),
+        ]);
     }
 }

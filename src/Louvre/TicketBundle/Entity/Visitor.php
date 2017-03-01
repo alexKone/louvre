@@ -66,9 +66,10 @@ class Visitor
     /**
      * @var
      *
-     * @ORM\ManyToOne(targetEntity="Louvre\TicketBundle\Entity\Bill", inversedBy="visitors", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Louvre\TicketBundle\Entity\Bill", inversedBy="visitors")
      */
     private $bill;
+
 
     /**
      * Get id
@@ -201,30 +202,6 @@ class Visitor
     }
 
     /**
-     * Set bill
-     *
-     * @param \Louvre\TicketBundle\Entity\Bill $bill
-     *
-     * @return Visitor
-     */
-    public function setBill(\Louvre\TicketBundle\Entity\Bill $bill = null)
-    {
-        $this->bill = $bill;
-
-        return $this;
-    }
-
-    /**
-     * Get bill
-     *
-     * @return \Louvre\TicketBundle\Entity\Bill
-     */
-    public function getBill()
-    {
-        return $this->bill;
-    }
-
-    /**
      * Set price
      *
      * @param integer $price
@@ -246,5 +223,29 @@ class Visitor
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set bill
+     *
+     * @param \Louvre\TicketBundle\Entity\Bill $bill
+     *
+     * @return Visitor
+     */
+    public function setBill(\Louvre\TicketBundle\Entity\Bill $bill = null)
+    {
+        $this->bill = $bill;
+
+        return $this;
+    }
+
+    /**
+     * Get bill
+     *
+     * @return \Louvre\TicketBundle\Entity\Bill
+     */
+    public function getBill()
+    {
+        return $this->bill;
     }
 }

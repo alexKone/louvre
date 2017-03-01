@@ -6,7 +6,7 @@ louvre_ticket_billing:
     path:    /billing
     defaults: { _controller: LouvreTicketBundle:Billing:index }
 
-louvre_ticket_checkout:
+louvre_ticket_order:
     path:    /checkout
-    defaults: { _controller: LouvreTicketBundle:Checkout:index }
+    defaults: { _controller: LouvreTicketBundle:Order:checkout }
 

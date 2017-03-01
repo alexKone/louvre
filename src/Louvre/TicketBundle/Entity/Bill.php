@@ -171,6 +171,29 @@ class Bill
         return $this->email;
     }
 
+    /**
+     * Set totalPrice
+     *
+     * @param integer $totalPrice
+     *
+     * @return Bill
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalPrice
+     *
+     * @return integer
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
+    }
 
     /**
      * Set billingDate
@@ -276,29 +299,5 @@ class Bill
     public function getVisitors()
     {
         return $this->visitors;
-    }
-
-    /**
-     * Set totalPrice
-     *
-     * @param integer $totalPrice
-     *
-     * @return Bill
-     */
-    public function setTotalPrice($totalPrice)
-    {
-        $this->totalPrice = $totalPrice;
-
-        return $this;
-    }
-
-    /**
-     * Get totalPrice
-     *
-     * @return integer
-     */
-    public function getTotalPrice()
-    {
-        return $this->totalPrice;
     }
 }

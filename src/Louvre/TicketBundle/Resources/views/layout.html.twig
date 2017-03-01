@@ -11,7 +11,19 @@
     {% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+<header class="header">
+    <img class="header__img img-responsive" src="{{ asset('bundles/img/image-header-louvre.png') }}" alt="">
+    <div class="header__title">
+        <p>Reservez votre billet a l'avance</p>
+    </div>
+</header>
+{% block body %}
+
+{% endblock %}
+
+<section>
+    <img class="img-responsive" src="{{ asset('bundles/img/background-louvre.jpeg') }}" alt="">
+</section>
 
 {% block javascripts %}
     <script src="{{ asset('bundles/js/jquery.min.js') }}"></script>
