@@ -57,6 +57,13 @@ class Visitor
     private $reduc = false;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
+    /**
      * @var
      *
      * @ORM\ManyToOne(targetEntity="Louvre\TicketBundle\Entity\Bill", inversedBy="visitors", cascade={"persist"})
@@ -215,5 +222,29 @@ class Visitor
     public function getBill()
     {
         return $this->bill;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Visitor
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

@@ -35,4 +35,62 @@ class Ticket
      * @ORM\Column(name="half_day", type="boolean")
      */
     private $halfDay;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set visitDate
+     *
+     * @param \DateTime $visitDate
+     *
+     * @return Ticket
+     */
+    public function setVisitDate($visitDate)
+    {
+        $this->visitDate = $visitDate;
+
+        return $this;
+    }
+
+    /**
+     * Get visitDate
+     *
+     * @return \DateTime
+     */
+    public function getVisitDate()
+    {
+        return $this->visitDate;
+    }
+
+    /**
+     * Set halfDay
+     *
+     * @param boolean $halfDay
+     *
+     * @return Ticket
+     */
+    public function setHalfDay($halfDay)
+    {
+        $this->halfDay = $halfDay;
+
+        return $this;
+    }
+
+    /**
+     * Get halfDay
+     *
+     * @return boolean
+     */
+    public function getHalfDay()
+    {
+        return $this->halfDay;
+    }
 }

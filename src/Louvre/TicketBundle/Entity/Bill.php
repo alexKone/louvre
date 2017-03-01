@@ -47,9 +47,9 @@ class Bill
     /**
      * @var int
      *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="total_price", type="integer")
      */
-    private $price = 0;
+    private $totalPrice = 0;
 
     /**
      * @var \DateTime
@@ -171,29 +171,6 @@ class Bill
         return $this->email;
     }
 
-    /**
-     * Set price
-     *
-     * @param integer $price
-     *
-     * @return Bill
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return integer
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
 
     /**
      * Set billingDate
@@ -299,5 +276,29 @@ class Bill
     public function getVisitors()
     {
         return $this->visitors;
+    }
+
+    /**
+     * Set totalPrice
+     *
+     * @param integer $totalPrice
+     *
+     * @return Bill
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get totalPrice
+     *
+     * @return integer
+     */
+    public function getTotalPrice()
+    {
+        return $this->totalPrice;
     }
 }
